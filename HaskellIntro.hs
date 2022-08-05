@@ -53,12 +53,14 @@ validate x = sumDigits(doubleEveryOther (reverseList(toDigits x))) `mod` 10 == 0
 square x = x*x
 
 pow :: (a -> a) -> Int -> a -> a
-pow f x = f
+pow f 0 a = a
+pow f x a = f(pow f (x - 1) a)
 
 
 g :: Integer -> Integer
 g 0 = 0
-g n = n - g(g$n-1)
+g n = n - (pow g 2 (n-1))
+
 
 h :: Integer -> Integer
 h 0 = 0
