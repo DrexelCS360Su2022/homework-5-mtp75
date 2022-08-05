@@ -64,7 +64,7 @@ g n = n - (pow g 2 (n-1))
 
 h :: Integer -> Integer
 h 0 = 0
-
+h n = n - (pow h 3 (n-1)) 
 
 d :: Int -> Integer -> Integer
 d = error "d not yet defined"
