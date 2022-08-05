@@ -15,35 +15,54 @@ isThisWorking = "Yes"
 --
 
 lastDigit :: Integer -> Integer
-lastDigit = error "lastDigit not yet defined"
+lastDigit 0 = 0
+lastDigit x = x `mod` 10
 
 dropLastDigit :: Integer -> Integer
-dropLastDigit = error "dropLastDigit not yet defined"
+dropLastDigit 0 = 0
+dropLastDigit x = (x - lastDigit x) `div` 10
 
 toDigits :: Integer -> [Integer]
-toDigits = error "toDigits not yet defined"
+toDigits 0 = []
+toDigits x
+    |x > 0 && x < 10 = [x]
+    |x >= 10 = toDigits(x `div` 10) ++ [x `mod` 10]
+
+
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther = error "doubleEveryOther not yet defined"
+doubleEveryOther [] = []
+doubleEveryOther [x] = [x]
+doubleEveryOther (x:y:z) = x:y*2:doubleEveryOther z
+
 
 sumDigits :: [Integer] -> Integer
-sumDigits = error "sumDigits not yet defined"
+sumDigits [] = 0
+sumDigits (x:y) = sum(toDigits x) + sumDigits y
+
+reverseList [] = []
+reverseList (x:xs) = reverseList xs ++ [x]
 
 validate :: Integer -> Bool
-validate = error "validate not yet defined"
+validate x = sumDigits(doubleEveryOther (reverseList(toDigits x))) `mod` 10 == 0
 
 --
 -- Problem 2
 --
 
+square x = x*x
+
 pow :: (a -> a) -> Int -> a -> a
-pow = error "pow not yet defined"
+pow f x = f
+
 
 g :: Integer -> Integer
-g = error "g not yet defined"
+g 0 = 0
+g n = n - g(g$n-1)
 
 h :: Integer -> Integer
-h = error "h not yet defined"
+h 0 = 0
+
 
 d :: Int -> Integer -> Integer
 d = error "d not yet defined"
